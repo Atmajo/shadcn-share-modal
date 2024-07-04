@@ -97,7 +97,7 @@ export default function Home() {
                 data-theme="default"
               >
                 <input
-                  className="line bg-transparent text-white w-full"
+                  className="line bg-transparent text-white w-full border-none outline-none"
                   defaultValue="npm i react-share-kit clipboard"
                   readOnly
                 />
