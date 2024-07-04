@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useState } from "react";
 import { CodeBlock, dracula } from "react-code-blocks";
-import ClipboardJS from "clipboard";
 
 const ShareCode = `export const ShareComp = ({ link }: ShareProps) => {
     new ClipboardJS(".copy");
@@ -65,8 +64,6 @@ import {
 import ClipboardJS from "clipboard";`;
 
 export default function Home() {
-  new ClipboardJS(".copy");
-
   const [code, setCode] = useState(false);
   return (
     <main className="flex flex-col justify-center items-center px-4 md:px-28 lg:px-44 py-20">
@@ -84,6 +81,9 @@ export default function Home() {
             Code
           </Button>
         </div>
+      </div>
+      <div className="mt-14">
+        <ShareComp link="https://atmajo.tech" />
       </div>
       <div className="relative flex flex-col justify-center items-end max-w-2xl">
         <p className="text-sm text-center opacity-80 font-normal mt-32">
