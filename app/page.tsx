@@ -2,17 +2,14 @@
 
 import ShareComp from "@/components/share-component";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { CodeBlock, dracula } from "react-code-blocks";
 import ClipboardJS from "clipboard";
 
-new ClipboardJS(".copy");
-
 const ShareCode = `export const ShareComp = ({ link }: ShareProps) => {
     new ClipboardJS(".copy");
-
+    
     return (
       <div className="border border-gray-500 rounded-lg w-96 ">
         <div className="flex justify-between items-center border-b border-gray-500 px-4 py-2">
@@ -68,6 +65,8 @@ import {
 import ClipboardJS from "clipboard";`;
 
 export default function Home() {
+  new ClipboardJS(".copy");
+  
   const [code, setCode] = useState(false);
   return (
     <main className="flex flex-col justify-center items-center px-4 md:px-28 lg:px-44 py-20">
