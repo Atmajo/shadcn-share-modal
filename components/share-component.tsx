@@ -9,14 +9,12 @@ import {
   TwitterShare,
   WhatsappShare,
 } from "react-share-kit";
-import ClipboardJS from "clipboard";
 
 interface ShareProps {
   link?: string;
 }
 
 const ShareComp = ({ link }: ShareProps) => {
-  new ClipboardJS(".copy");
   
   return (
     <div className="border border-gray-500 rounded-lg w-96 ">
@@ -41,8 +39,6 @@ const ShareComp = ({ link }: ShareProps) => {
             type="submit"
             size="sm"
             className="p-4 copy"
-            data-clipboard-action="copy"
-            data-clipboard-target="#link"
           >
             <span className="sr-only">Copy</span>
             <CopyIcon className="h-4 w-4" />
