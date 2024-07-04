@@ -99,6 +99,7 @@ export default function Home() {
                 <input
                   className="line bg-transparent text-white w-full"
                   defaultValue="npm i react-share-kit clipboard"
+                  readOnly
                 />
               </code>
             </pre>
