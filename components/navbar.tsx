@@ -3,12 +3,14 @@ import React from "react";
 import { Button } from "./ui/button";
 import { ModeToggle } from "./mode-toggle";
 import Link from "next/link";
+import GithubStarCount from "./github-star";
 
 const Navbar = () => {
   return (
     <nav className="flex justify-between items-center py-4 px-4 md:px-20 lg:px-44">
       <Share2 className="w-5 h-5" />
       <div className="flex items-center gap-x-2">
+        <GithubStarCount repoUrl="https://github.com/atmajo/shadcn-share-modal" />
         <Link href="https://github.com/atmajo/shadcn-share-modal">
           <Button>
             <Github className="w-5 h-5" />
