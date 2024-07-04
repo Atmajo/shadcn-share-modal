@@ -66,7 +66,7 @@ import ClipboardJS from "clipboard";`;
 
 export default function Home() {
   new ClipboardJS(".copy");
-  
+
   const [code, setCode] = useState(false);
   return (
     <main className="flex flex-col justify-center items-center px-4 md:px-28 lg:px-44 py-20">
@@ -84,50 +84,6 @@ export default function Home() {
             Code
           </Button>
         </div>
-      </div>
-      <div className="mt-14">
-        {!code && <ShareComp link="https://atmajo.tech" />}
-
-        {code && (
-          <div className="flex flex-col justify-center gap-y-5">
-            <pre
-              className="mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900"
-              data-language="bash"
-              data-theme="default"
-            >
-              <code
-                className="relative flex justify-between rounded bg-muted px-2 py-[0.2rem] font-mono text-sm"
-                data-language="bash"
-                data-theme="default"
-              >
-                <input
-                  id="bash"
-                  className="line bg-transparent text-white w-full"
-                  defaultValue="npm i react-share-kit clipboard"
-                />
-                <button
-                  className="px-2 py-1 bg-background hover:bg-slate-700 rounded-lg"
-                  data-clipboard-action="copy"
-                  data-clipboard-target="#bash"
-                >
-                  Copy
-                </button>
-              </code>
-            </pre>
-            <CodeBlock
-              text={ImportCode}
-              language="tsx"
-              showLineNumbers={true}
-              theme={dracula}
-            />
-            <CodeBlock
-              text={ShareCode}
-              language="tsx"
-              showLineNumbers={true}
-              theme={dracula}
-            />
-          </div>
-        )}
       </div>
       <div className="relative flex flex-col justify-center items-end max-w-2xl">
         <p className="text-sm text-center opacity-80 font-normal mt-32">
