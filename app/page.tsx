@@ -2,9 +2,22 @@
 
 import ShareComp from "@/components/share-component";
 import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
+import { Switch } from "@/components/ui/switch";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useState } from "react";
 import { CodeBlock, dracula } from "react-code-blocks";
+import { useForm } from "react-hook-form";
+import z from "zod";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
 
 const ShareCode = `export const ShareComp = ({ link }: ShareProps) => {
   new ClipboardJS(".copy");
@@ -64,7 +77,23 @@ WhatsappShare,
 import ClipboardJS from "clipboard";`;
 
 export default function Home() {
-  const [code, setCode] = useState(false);
+  const formSchema = z.object({
+    code: z.boolean(),
+  });
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      code: false,
+    },
+  });
+
+  const [code, setCode] = useState(form.getValues("code"));
+
+  const onSubmit = (data: z.infer<typeof formSchema>) => {
+    setCode(data.code);
+  };
+
   return (
     <main className="flex flex-col justify-center items-center px-4 md:px-28 lg:px-44 py-20">
       <div className="relative flex flex-col justify-center items-center max-w-2xl">
@@ -76,13 +105,46 @@ export default function Home() {
           shadcn-ui and tailwind-css using react-share!
         </p>
         <div className="flex items-center gap-x-4 mt-10">
-          <Button onClick={() => setCode(false)}>Live Demo</Button>
-          <Button variant="secondary" onClick={() => setCode(true)}>
-            Code
-          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button>Live Demo</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px] py-10">
+              <ShareComp link="https://atmajo.tech" />
+            </DialogContent>
+          </Dialog>
+          <Link href="https://github.com/atmajo/shadcn-share-modal">
+            <Button variant="secondary">Code</Button>
+          </Link>
         </div>
       </div>
       <div className="mt-14">
+        <div>
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="w-full space-y-6"
+            >
+              <FormField
+                control={form.control}
+                name="code"
+                render={({ field }) => (
+                  <FormItem className="flex items-center mb-2">
+                    <FormLabel className="pt-2">Code</FormLabel>
+                    <FormControl>
+                      <Button variant="ghost" className="hover:bg-none">
+                        <Switch
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </Button>
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </form>
+          </Form>
+        </div>
         {!code && <ShareComp link="https://atmajo.tech" />}
         {code && (
           <div className="flex flex-col justify-center gap-y-5">
