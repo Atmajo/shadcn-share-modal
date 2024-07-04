@@ -249,66 +249,7 @@ export default function Home() {
         </div>
       </div>
       <div className="mt-14">
-        <div>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="w-full space-y-6"
-            >
-              <FormField
-                control={form.control}
-                name="code"
-                render={({ field }) => (
-                  <FormItem className="flex items-center mb-2">
-                    <FormLabel className="pt-2">Code</FormLabel>
-                    <FormControl>
-                      <Button variant="ghost" className="hover:bg-none">
-                        <Switch
-                          checked={field.value}
-                          onCheckedChange={field.onChange}
-                        />
-                      </Button>
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-            </form>
-          </Form>
-        </div>
-        {!code && <ShareComp link="https://atmajo.tech" />}
-        {code && (
-          <div className="flex flex-col justify-center gap-y-5">
-            <pre
-              className="mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900"
-              data-language="bash"
-              data-theme="default"
-            >
-              <code
-                className="relative flex justify-between rounded bg-muted px-2 py-[0.2rem] font-mono text-sm"
-                data-language="bash"
-                data-theme="default"
-              >
-                <input
-                  className="line bg-transparent text-white w-full border-none outline-none"
-                  defaultValue="npm i react-share-kit clipboard"
-                  readOnly
-                />
-              </code>
-            </pre>
-            <CodeBlock
-              text={ImportCode}
-              language="tsx"
-              showLineNumbers={true}
-              theme={dracula}
-            />
-            <CodeBlock
-              text={ShareCode}
-              language="tsx"
-              showLineNumbers={true}
-              theme={dracula}
-            />
-          </div>
-        )}
+        <ShareComp link="https://atmajo.tech" />
       </div>
       <div className="relative flex flex-col justify-center items-end max-w-2xl">
         <p className="text-sm text-center opacity-80 font-normal mt-32">
