@@ -103,7 +103,7 @@ export default function Home() {
               >
                 <input
                   id="bash"
-                  className="line bg-transparent w-full"
+                  className="line bg-transparent text-white w-full"
                   defaultValue="npm i react-share-kit clipboard"
                 />
                 <button
